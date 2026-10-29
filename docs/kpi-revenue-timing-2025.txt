@@ -1,0 +1,25 @@
+CREATE VIEW
+DO
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+BEGIN
+ event_net_sales | restated_net_sales | prior_period_sales_returned_now | period_sales_returned_later | reconciled_restated_net_sales | reconciles 
+-----------------+--------------------+---------------------------------+-----------------------------+-------------------------------+------------
+  15762528589.51 |     15772251357.76 |                      9722768.25 |                           0 |                15772251357.76 | t
+(1 row)
+
+ROLLBACK
