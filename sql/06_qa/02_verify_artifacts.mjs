@@ -30,7 +30,7 @@ assert(!files.some(p=>forbidden.test(p)),'Excluded local file or credential cont
 const patterns=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\bgh[pousr]_[A-Za-z0-9]{30,}/,/\bgithub_pat_[A-Za-z0-9_]{40,}/,/\bAKIA[0-9A-Z]{16}\b/,/\bsk-(?:proj-)?[A-Za-z0-9_-]{32,}/,/(?:postgres(?:ql)?|mysql):\/\/[^\s/:]+:[^\s/@]+@/i,/(?:password|passwd|pwd|api_key|access_token)\s*[:=]\s*["'][^"'\r\n]{4,}["']/i];
 let scanned=0;
 for(const p of files){if(!/\.(?:md|sql|ps1|mjs|json|jsonl|txt|csv|m|dax|bas)$/.test(p))continue;const text=fs.readFileSync(p,'utf8');scanned++;for(const re of patterns)assert(!re.test(text),`Potential credential detected in ${p}; inspect locally`);}
-const docs=['README.md','docs/data_dictionary.md','docs/erd.md','docs/refresh.md','docs/excel_model.md','docs/sql_catalog.md','docs/final_qa.md'];
+const docs=['README.md',...fs.readdirSync('docs').filter(p=>p.endsWith('.md')&&fs.existsSync('docs/'+p)).filter(p=>['core_analysis.md','data_dictionary.md','erd.md','kpi_dictionary.md','optimization_report.md','recommendations.md','refresh.md','setup.md','final_qa.md'].includes(p)).map(p=>'docs/'+p)];
 let links=0;
 for(const p of docs){const text=fs.readFileSync(p,'utf8');for(const m of text.matchAll(/\]\(([^)]+)\)/g)){const target=m[1].split('#')[0];if(!target||/^https?:/.test(target))continue;assert(path.resolve(path.dirname(p),target)===path.resolve(out,'artifacts.json')||fs.existsSync(path.resolve(path.dirname(p),target)),`Broken link in ${p}: ${target}`);links++;}}
 const ddl=fs.readFileSync('sql/00_setup/analytics_schema.sql','utf8');

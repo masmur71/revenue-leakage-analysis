@@ -1,3 +1,0 @@
-psql:/tmp/leakage-phase3/04_optimization/02_validate.sql:14: NOTICE:  PASS: leakage exact multiset equality
-psql:/tmp/leakage-phase3/04_optimization/02_validate.sql:14: NOTICE:  PASS: visits exact multiset equality
-psql:/tmp/leakage-phase3/04_optimization/02_validate.sql:14: NOTICE:  PASS: cohort exact multiset equality

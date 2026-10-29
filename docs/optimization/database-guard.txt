@@ -1,2 +1,0 @@
-psql:/tmp/leakage-phase3/04_optimization/00_candidates.sql:8: ERROR:  Optimization requires the isolated leakage_lab database
-CONTEXT:  PL/pgSQL function inline_code_block line 3 at RAISE

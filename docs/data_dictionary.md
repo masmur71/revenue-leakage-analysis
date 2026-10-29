@@ -224,5 +224,5 @@ One visit event. Conversion deduplicates salesman/date/outlet; same-day matching
 - `reference_price` is a supplied comparison baseline, not proven collectible revenue. `is_promo_valid=false` only indicates invalid attached promotion when `promotion_id` is present.
 - `assigned_salesman_id` differs conceptually from recorded `salesman_id`; the mismatch flag is an incidence indicator, not a monetary loss.
 - Invoice credit terms require exactly one inclusive historical match; Cash uses zero days. AR includes cash residuals and excludes unallocated/future payments, without inferred return credit notes.
-- Synthetic IDs and contact-like fields are fabricated dataset attributes. Date coverage ends on 2025-12-31; see [audit](data_audit.md) for counts, coverage and validation.
-- Derived CSV grains, data types, keys and 28 workbook relationships are in the [Excel model guide](excel_model.md) and [model contract](../excel/model_contract.json). They are not additional source tables.
+- Synthetic IDs and contact-like fields are fabricated dataset attributes. Date coverage ends on 2025-12-31; see [verification record](final_qa.md) for counts, coverage and validation.
+- Derived CSV grains, data types, keys and 28 workbook relationships are in the [refresh guide](refresh.md) and [model contract](../excel/model_contract.json). They are not additional source tables.
