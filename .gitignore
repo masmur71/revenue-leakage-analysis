@@ -7,3 +7,20 @@
 /excel/DashboardRunner.xlsm
 /excel/dashboard-runs/**/*.xlsx
 /excel/dashboard-runs/**/alternate-source/
+
+# Local detailed run logs and duplicate evidence; retain final acceptance summaries.
+/excel/dashboard-runs/*-audit/
+/excel/dashboard-runs/*-dashboard/
+/excel/measure-install-logs/*
+!/excel/measure-install-logs/20261029-190718.csv
+!/excel/measure-install-logs/20261029-190718.source.dax
+/docs/qa/analysis-*.txt
+/docs/qa/kpi-*.txt
+/docs/qa/audit-*.txt
+/docs/qa/native-main-extended.json
+/docs/qa/recommendations.txt
+/docs/analysis-validation-*-copy.txt
+/docs/kpi-reference-restored-*.txt
+/docs/audit-restored.txt
+/docs/excel/export-log.txt
+/docs/excel/screenshots/native-ui-zoom-capture-blocked.png

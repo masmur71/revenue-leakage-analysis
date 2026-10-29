@@ -1,4 +1,0 @@
-timestamp,event,object,detail
-"2026-10-29 21:45:26","START","audit","Excel 16.0; OS=Windows (64-bit) NT 10.00; target=https://d.docs.live.net/e77b9cdadab564e5/Documents/PersProject/leakageanalysis/excel/RevenueLeakage.xlsx"
-"2026-10-29 21:45:27","STOPPED","validate runner","Stopped at: validate runner
-Error -2147220757: Missing/inactive relationship: DimOutlet.outlet_id -> FactRFM.outlet_id"

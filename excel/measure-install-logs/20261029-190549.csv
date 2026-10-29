@@ -1,3 +1,0 @@
-timestamp,event,measure,detail,formula
-"2026-10-29 19:05:49","START","","Native Excel installer started; runner=https://d.docs.live.net/e77b9cdadab564e5/Documents/PersProject/leakageanalysis/excel/MeasureInstaller.xlsm",""
-"2026-10-29 19:05:50","CANCELLED","","Cloud workbook identity was not confirmed; no target changes.",""
