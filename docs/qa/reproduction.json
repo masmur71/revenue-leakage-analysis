@@ -1,0 +1,14 @@
+{
+  "limits": "No new native refresh or UI check; use separately rechecked Phase 4 captures. QA database retained; no cleanup/drop.",
+  "source": "bintel",
+  "dump_sha256": "6afb7f1cc1254c9846d2aac375121c0d87694dca266ccef479bd341ce192d259",
+  "status": "PASS",
+  "exports": "SHA-256 equal to accepted Excel source manifest",
+  "scenarios": 5,
+  "audit": "13 table counts and 40 controls; source/restored output identical",
+  "suites": "KPI and analysis; source/restored output identical",
+  "workbook_sha256": "72dce81f82b2d1c0aefa77201652ceaf81b33e9d8521552ce45a2bd22a35e047",
+  "date": "2026-10-30",
+  "export_files": 20,
+  "database": "leakage_qa_phase6"
+}

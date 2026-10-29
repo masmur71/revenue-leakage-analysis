@@ -1,0 +1,195 @@
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_branch | 15
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_date | 731
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_outlet | 3000
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_outlet_credit_term | 6000
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_product | 300
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_salesman | 50
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | dim_salesman_assignment | 3000
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | fact_invoices | 129653
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | fact_payments | 121924
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | fact_returns | 6725
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | fact_sales | 329263
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | fact_targets | 360
+psql:/tmp/leakage-phase6/sql/01_audit/01_audit.sql:26: NOTICE:  row_count | fact_visits | 105918
+                    check_name                    | failures
+--------------------------------------------------+----------
+ orphan: dim_outlet_branch_id_fkey                |        0
+ orphan: dim_outlet_credit_term_outlet_id_fkey    |        0
+ orphan: dim_salesman_assignment_branch_id_fkey   |        0
+ orphan: dim_salesman_assignment_outlet_id_fkey   |        0
+ orphan: dim_salesman_assignment_salesman_id_fkey |        0
+ orphan: dim_salesman_home_branch_id_fkey         |        0
+ orphan: fact_invoices_branch_id_fkey             |        0
+ orphan: fact_invoices_date_sk_fkey               |        0
+ orphan: fact_invoices_outlet_id_fkey             |        0
+ orphan: fact_invoices_salesman_id_fkey           |        0
+ orphan: fact_payments_date_sk_fkey               |        0
+ orphan: fact_payments_invoice_id_fkey            |        0
+ orphan: fact_returns_branch_id_fkey              |        0
+ orphan: fact_returns_date_sk_fkey                |        0
+ orphan: fact_returns_outlet_id_fkey              |        0
+ orphan: fact_returns_sales_line_id_fkey          |        0
+ orphan: fact_returns_sku_id_fkey                 |        0
+ orphan: fact_sales_assigned_salesman_id_fkey     |        0
+ orphan: fact_sales_assignment_sk_fkey            |        0
+ orphan: fact_sales_branch_id_fkey                |        0
+ orphan: fact_sales_date_sk_fkey                  |        0
+ orphan: fact_sales_invoice_id_fkey               |        0
+ orphan: fact_sales_outlet_id_fkey                |        0
+ orphan: fact_sales_salesman_id_fkey              |        0
+ orphan: fact_sales_sku_id_fkey                   |        0
+ orphan: fact_targets_branch_id_fkey              |        0
+ orphan: fact_targets_date_sk_fkey                |        0
+ orphan: fact_visits_branch_id_fkey               |        0
+ orphan: fact_visits_date_sk_fkey                 |        0
+ orphan: fact_visits_outlet_id_fkey               |        0
+ orphan: fact_visits_salesman_id_fkey             |        0
+ sales financial identities                       |        0
+ invoice vs sales lines                           |        0
+ returns vs sales lines                           |        0
+ credit term point-in-time coverage               |        0
+ assignment point-in-time coverage                |        0
+ credit SCD overlap                               |        0
+ assignment SCD overlap                           |        0
+ target branch-month duplicates                   |        0
+ effective call without sale                      |        0
+(40 rows)
+
+ first_sale | last_sale  |  gross_sales   |  discounts  |   returns    |   net_sales    | gross_profit
+------------+------------+----------------+-------------+--------------+----------------+---------------
+ 2024-01-01 | 2025-12-31 | 28960053341.78 | 58408378.04 | 363967685.02 | 28537677278.72 | 6493439139.72
+(1 row)
+
+    min     |    max     | allocation_status | count  |      sum
+------------+------------+-------------------+--------+----------------
+ 2024-01-01 | 2025-12-31 | Allocated         | 121924 | 25504883726.22
+(1 row)
+
+       table_name        |        column_name         | data_type | is_nullable
+-------------------------+----------------------------+-----------+-------------
+ dim_branch              | branch_id                  | text      | NO
+ dim_branch              | branch_name                | text      | NO
+ dim_branch              | region_id                  | text      | NO
+ dim_branch              | region_name                | text      | NO
+ dim_branch              | city                       | text      | YES
+ dim_branch              | province                   | text      | YES
+ dim_date                | date_sk                    | integer   | NO
+ dim_date                | date                       | date      | NO
+ dim_date                | year                       | integer   | NO
+ dim_date                | quarter                    | integer   | NO
+ dim_date                | month                      | integer   | NO
+ dim_date                | month_name                 | text      | NO
+ dim_date                | week_of_year               | integer   | NO
+ dim_date                | day_of_month               | integer   | NO
+ dim_date                | day_of_week                | text      | NO
+ dim_date                | is_weekend                 | boolean   | NO
+ dim_outlet              | outlet_id                  | text      | NO
+ dim_outlet              | outlet_name                | text      | NO
+ dim_outlet              | branch_id                  | text      | NO
+ dim_outlet              | channel                    | text      | NO
+ dim_outlet              | onboard_date               | date      | NO
+ dim_outlet              | initial_credit_term_days   | integer   | NO
+ dim_outlet_credit_term  | credit_term_sk             | bigint    | NO
+ dim_outlet_credit_term  | outlet_id                  | text      | NO
+ dim_outlet_credit_term  | valid_from                 | date      | NO
+ dim_outlet_credit_term  | valid_to                   | date      | NO
+ dim_outlet_credit_term  | credit_term_days           | integer   | NO
+ dim_outlet_credit_term  | version                    | integer   | NO
+ dim_outlet_credit_term  | is_current                 | boolean   | NO
+ dim_product             | sku_id                     | text      | NO
+ dim_product             | sku_name                   | text      | NO
+ dim_product             | category                   | text      | NO
+ dim_product             | standard_cost              | numeric   | NO
+ dim_salesman            | salesman_id                | text      | NO
+ dim_salesman            | salesman_name              | text      | NO
+ dim_salesman            | home_branch_id             | text      | NO
+ dim_salesman            | hire_date                  | date      | NO
+ dim_salesman            | status                     | text      | NO
+ dim_salesman_assignment | assignment_sk              | bigint    | NO
+ dim_salesman_assignment | outlet_id                  | text      | NO
+ dim_salesman_assignment | salesman_id                | text      | NO
+ dim_salesman_assignment | branch_id                  | text      | NO
+ dim_salesman_assignment | valid_from                 | date      | NO
+ dim_salesman_assignment | valid_to                   | date      | NO
+ dim_salesman_assignment | version                    | integer   | NO
+ dim_salesman_assignment | is_current                 | boolean   | NO
+ fact_invoices           | invoice_id                 | text      | NO
+ fact_invoices           | sales_order_id             | text      | NO
+ fact_invoices           | invoice_date               | date      | NO
+ fact_invoices           | due_date                   | date      | NO
+ fact_invoices           | outlet_id                  | text      | NO
+ fact_invoices           | branch_id                  | text      | NO
+ fact_invoices           | salesman_id                | text      | NO
+ fact_invoices           | channel                    | text      | NO
+ fact_invoices           | invoice_amount             | numeric   | NO
+ fact_invoices           | credit_term_days           | integer   | NO
+ fact_invoices           | payment_method             | text      | NO
+ fact_invoices           | date_sk                    | integer   | NO
+ fact_payments           | payment_id                 | text      | NO
+ fact_payments           | invoice_id                 | text      | NO
+ fact_payments           | payment_date               | date      | NO
+ fact_payments           | payment_amount             | numeric   | NO
+ fact_payments           | payment_method             | text      | NO
+ fact_payments           | allocation_status          | text      | NO
+ fact_payments           | date_sk                    | integer   | NO
+ fact_returns            | return_id                  | text      | NO
+ fact_returns            | sales_line_id              | text      | NO
+ fact_returns            | sales_order_id             | text      | NO
+ fact_returns            | return_date                | date      | NO
+ fact_returns            | outlet_id                  | text      | NO
+ fact_returns            | branch_id                  | text      | NO
+ fact_returns            | sku_id                     | text      | NO
+ fact_returns            | return_quantity            | integer   | NO
+ fact_returns            | return_amount              | numeric   | NO
+ fact_returns            | returned_cogs              | numeric   | NO
+ fact_returns            | reason                     | text      | NO
+ fact_returns            | date_sk                    | integer   | NO
+ fact_sales              | sales_line_id              | text      | NO
+ fact_sales              | sales_order_id             | text      | NO
+ fact_sales              | invoice_id                 | text      | NO
+ fact_sales              | sales_date                 | date      | NO
+ fact_sales              | date_sk                    | integer   | NO
+ fact_sales              | outlet_id                  | text      | NO
+ fact_sales              | branch_id                  | text      | NO
+ fact_sales              | salesman_id                | text      | NO
+ fact_sales              | assigned_salesman_id       | text      | NO
+ fact_sales              | assignment_sk              | bigint    | NO
+ fact_sales              | sku_id                     | text      | NO
+ fact_sales              | channel                    | text      | NO
+ fact_sales              | quantity                   | integer   | NO
+ fact_sales              | unit_price_before_discount | numeric   | NO
+ fact_sales              | gross_sales                | numeric   | NO
+ fact_sales              | discount_amount            | numeric   | NO
+ fact_sales              | net_sales_before_returns   | numeric   | NO
+ fact_sales              | return_quantity            | integer   | NO
+ fact_sales              | return_amount              | numeric   | NO
+ fact_sales              | returned_cogs              | numeric   | NO
+ fact_sales              | net_sales                  | numeric   | NO
+ fact_sales              | unit_cost                  | numeric   | NO
+ fact_sales              | cogs_sold                  | numeric   | NO
+ fact_sales              | net_cogs                   | numeric   | NO
+ fact_sales              | gross_profit               | numeric   | NO
+ fact_sales              | gross_margin_pct           | numeric   | YES
+ fact_sales              | reference_price            | numeric   | NO
+ fact_sales              | price_deviation_pct        | numeric   | YES
+ fact_sales              | promotion_id               | text      | YES
+ fact_sales              | promo_discount_pct         | numeric   | YES
+ fact_sales              | is_promo_valid             | boolean   | NO
+ fact_sales              | is_returned                | boolean   | NO
+ fact_sales              | is_salesman_match          | boolean   | NO
+ fact_targets            | target_id                  | text      | NO
+ fact_targets            | branch_id                  | text      | NO
+ fact_targets            | target_month               | text      | NO
+ fact_targets            | target_net_sales           | numeric   | NO
+ fact_targets            | currency                   | text      | NO
+ fact_targets            | date_sk                    | integer   | NO
+ fact_visits             | visit_id                   | text      | NO
+ fact_visits             | visit_date                 | date      | NO
+ fact_visits             | date_sk                    | integer   | NO
+ fact_visits             | outlet_id                  | text      | NO
+ fact_visits             | branch_id                  | text      | NO
+ fact_visits             | salesman_id                | text      | NO
+ fact_visits             | visit_status               | text      | NO
+ fact_visits             | is_completed               | boolean   | NO
+ fact_visits             | is_effective_call          | boolean   | NO
+(125 rows)

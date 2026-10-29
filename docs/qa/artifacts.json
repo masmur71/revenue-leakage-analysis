@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "date": "2026-10-30",
+  "timezone": "Asia/Jakarta",
+  "workbook_sha256": "72dce81f82b2d1c0aefa77201652ceaf81b33e9d8521552ce45a2bd22a35e047",
+  "workbook_unchanged": true,
+  "native_main": 282,
+  "native_extended": 131,
+  "cohort_samples": 10,
+  "refresh_values": 138,
+  "source_tables": 13,
+  "foreign_keys": 31,
+  "local_links": 64,
+  "tracked_and_proposed_text_files_scanned": 212,
+  "credential_scan": "No supported credential patterns detected; heuristic text scan, not proof of absence in every binary or Git history.",
+  "excluded_files": "No forbidden local paths in tracked/proposed deliverables",
+  "optimization_plans": 54,
+  "limits": "Rechecked stored captures only; no new Excel refresh/UI/reopen test. Final Phase 4 operator attribution remains unchanged."
+}

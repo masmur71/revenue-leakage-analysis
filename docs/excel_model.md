@@ -2,7 +2,7 @@
 
 For step-by-step installation in Indonesian, see [Panduan pemasangan Excel](panduan_pemasangan_excel.md).
 
-**IN PROGRESS. No native workbook has been built or accepted yet.** CSV/M/DAX files are implementation inputs, not proof of working native Excel features. The user selected a new workbook, all KPI areas with leakage priority, and manual M/DAX installation when native authoring is unavailable.
+**Accepted deliverable:** [RevenueLeakage.xlsx](../excel/RevenueLeakage.xlsx). The [Phase 4 acceptance record](excel/phase4-handoff.md) distinguishes executed native reconciliation from operator-reported final appearance/reopen/recovery. Use the [refresh guide](refresh.md) for routine operation; installation sections below describe initial construction only. Preserve final manual formatting.
 
 ## Reproduce inputs
 
@@ -10,9 +10,7 @@ Run from the repository root in PowerShell with Docker running:
 
 ```powershell
 ./sql/05_excel/02_export.ps1
-$node = 'C:\Users\masmu\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'
-& $node excel/build_contract.mjs
-& $node excel/verify_exports.mjs
+node excel/verify_exports.mjs
 ```
 
 `bintel` stays read-only. The export creates session-local views before a REPEATABLE READ READ ONLY transaction; no source data, permanent schema or indexes change. Original Phase 1/2 definitions remain authoritative. Phase 3's distinct-call/aggregate-first approaches inform the export without changing metrics.

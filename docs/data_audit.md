@@ -49,4 +49,4 @@ Sales, payments and visits span 2024-01-01 through 2025-12-31; returns begin 202
 
 The owner/privilege-free custom dump is 19,642,051 bytes. It restored successfully into new database `leakage_lab`. All 13 row counts, all 40 controls, totals and column metadata in the audit outputs match exactly. This verifies the selected controls, not byte-level equality of every restored row.
 
-Phase 1 must define DSO denominator, overdue boundary, treatment of returns in receivables, snapshot timing, effective-call attribution and leakage overlap. Finite SCD intervals require explicit handling outside the observed period. Synthetic data and limited history restrict business generalization. Do not subtract returns again from the already adjusted `fact_sales.net_sales`.
+The [KPI contract](kpi_dictionary.md) now defines DSO denominator, overdue boundary, treatment of returns in receivables, snapshot timing, effective-call attribution and leakage overlap. Finite SCD intervals require explicit handling outside the observed period. Synthetic data and limited history restrict business generalization. Do not subtract returns again from the already adjusted `fact_sales.net_sales`.

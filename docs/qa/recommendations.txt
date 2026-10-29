@@ -1,0 +1,42 @@
+E1: observed commercial amounts; not a recoverable-loss total
+   net_sales    | gross_profit  |   returns    | return_margin_reversal |  discounts  | price_shortfall | price_upside | invalid_promo_discount | mismatch_sales
+----------------+---------------+--------------+------------------------+-------------+-----------------+--------------+------------------------+----------------
+ 15762528589.51 | 3851071463.51 | 210279535.21 |            50939314.21 | 31877245.06 |      3023132.22 |         0.00 |                      0 |              0
+(1 row)
+
+E2: return prevention base; national reasons overlap branch cuts
+      reason       | return_amount | margin_reversal
+-------------------+---------------+-----------------
+ Order Error       |   53343639.52 |     12928145.52
+ Damaged           |   52488747.27 |     12604255.27
+ Expired           |   52456553.89 |     12570436.89
+ Quality Complaint |   51990594.53 |     12836476.53
+(4 rows)
+
+ member_id |   returns   | billed_sales |      return_rate
+-----------+-------------+--------------+------------------------
+ B002      | 34510872.43 | 977186633.84 | 0.03531656209252924548
+(1 row)
+
+E3: price-control base and upper-bound scenario
+ member_id | price_shortfall | assumed_revenue_ceiling
+-----------+-----------------+-------------------------
+ B003      |      3023132.22 |              1511566.11
+(1 row)
+
+E4: cash opportunity; not incremental revenue
+  outstanding  |    overdue    | assumed_cash_acceleration
+---------------+---------------+---------------------------
+ 3396761237.52 | 3239849366.28 |              161992468.31
+(1 row)
+
+ branch_id |   overdue
+-----------+--------------
+ B001      | 290782302.49
+(1 row)
+
+E5: scenario arithmetic; revenue and GP are alternative lenses, never additive
+ prevented_return_revenue | retained_return_gp
+--------------------------+--------------------
+              10513976.76 |         2546965.71
+(1 row)

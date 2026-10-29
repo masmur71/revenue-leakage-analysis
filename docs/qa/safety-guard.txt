@@ -1,0 +1,1 @@
+PASS: existing QA database refused before restore; final runner parses.
