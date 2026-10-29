@@ -54,4 +54,14 @@ For a different supported period, after the runner has copied scripts into the c
 docker exec bintel-pg psql -U bintel -d bintel -X -v ON_ERROR_STOP=1 -v period_start=2024-01-01 -v period_end=2024-12-31 -v as_of_date=2024-12-31 -f /tmp/leakage-kpi/01_reference_metrics.sql
 ```
 
-No final business recommendations or Excel dashboard have been produced yet. Phase 2 adds diagnostic analysis to the agreed contract. Keep monetary values numeric and distinguish transaction dates from snapshot dates. Period revenue recognizes returns on their return dates; AR does not assume merchandise returns are invoice-settling credit notes. See the dictionary before comparing figures from the earlier database summary.
+No final business recommendations or Excel dashboard have been produced yet. Phase 2 provides diagnostic analysis using the agreed contract. Keep monetary values numeric and distinguish transaction dates from snapshot dates. Period revenue recognizes returns on their return dates; AR does not assume merchandise returns are invoice-settling credit notes. See the dictionary before comparing figures from the earlier database summary.
+
+## Core SQL diagnostics
+
+Phase 2 analysis and limitations are documented in `docs/core_analysis.md`. Run:
+
+```powershell
+./sql/03_analysis/03_verify_phase2.ps1
+```
+
+The runner checks all diagnostic grains and financial reconciliations on five date scenarios, compares eight full-row fingerprints on source/copy, and produces `docs/analysis-report-2025.txt`. Query definitions are in `sql/03_analysis/00_analysis_context.sql`; `01_business_report.sql` answers the business questions and `02_validate_analysis.sql` enforces the controls. All report reads use a read-only transaction; only session-local metadata is created beforehand. Revenue leakage indicators remain separate; missing target volume/price components are explicitly disclosed. Phase 3 will benchmark selected queries on the isolated copy.
