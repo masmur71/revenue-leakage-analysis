@@ -65,3 +65,7 @@ Phase 2 analysis and limitations are documented in `docs/core_analysis.md`. Run:
 ```
 
 The runner checks all diagnostic grains and financial reconciliations on five date scenarios, compares eight full-row fingerprints on source/copy, and produces `docs/analysis-report-2025.txt`. Query definitions are in `sql/03_analysis/00_analysis_context.sql`; `01_business_report.sql` answers the business questions and `02_validate_analysis.sql` enforces the controls. All report reads use a read-only transaction; only session-local metadata is created beforehand. Revenue leakage indicators remain separate; missing target volume/price components are explicitly disclosed. Phase 3 will benchmark selected queries on the isolated copy.
+
+## Query optimization evidence
+
+Phase 3 benchmarks three diagnostic queries on the isolated copy. Run `./sql/04_optimization/03_run_benchmarks.ps1` to reproduce rewrite-only, composite-index and unhelpful-index comparisons. The runner enforces `leakage_lab`, records 54 measured JSON plans plus exact result comparisons over five date cases, and removes its experiment indexes. See `docs/optimization_report.md` for methodology, timing ranges, plan/buffer interpretation and tradeoffs; raw evidence is under `docs/optimization/`. Original reference queries remain unchanged.

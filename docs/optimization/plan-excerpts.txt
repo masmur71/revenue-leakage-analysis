@@ -1,0 +1,274 @@
+baseline / leakage / before, repetition 1
+WindowAgg relation= index= rows=3291 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+  WindowAgg relation= index= rows=3291 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+    WindowAgg relation= index= rows=3291 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+      Incremental Sort relation= index= rows=3291 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+        Subquery Scan relation= index= rows=3291 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+          Aggregate relation= index= rows=3291 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+            Sort relation= index= rows=544995 loops=1 shared_hit=35586 shared_read=26520 temp_written=5638
+              Append relation= index= rows=544995 loops=1 shared_hit=35586 shared_read=26520 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=11830 shared_read=8872 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=11830 shared_read=8872 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=352 shared_read=8872 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=11862 shared_read=8840 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=11862 shared_read=8840 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=384 shared_read=8840 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=11894 shared_read=8808 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=11894 shared_read=8808 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=416 shared_read=8808 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+
+baseline / leakage / after, repetition 1
+WindowAgg relation= index= rows=3291 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+  WindowAgg relation= index= rows=3291 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+    WindowAgg relation= index= rows=3291 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+      Sort relation= index= rows=3291 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+        Subquery Scan relation= index= rows=3291 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+          Aggregate relation= index= rows=3291 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+            Append relation= index= rows=181665 loops=1 shared_hit=11926 shared_read=8776 temp_written=0
+              Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=448 shared_read=8776 temp_written=0
+              Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                  Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                  Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+
+baseline / visits / before, repetition 1
+Aggregate relation= index= rows=1 loops=1 shared_hit=393058 shared_read=0 temp_written=0
+  Seq Scan relation=fact_visits index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+  Index Scan relation=fact_sales index=idx_fact_sales_outlet_id rows=0 loops=54588 shared_hit=391946 shared_read=0 temp_written=0
+
+baseline / visits / after, repetition 1
+Aggregate relation= index= rows=1 loops=1 shared_hit=10336 shared_read=0 temp_written=0
+  Aggregate relation= index= rows=69958 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+  Merge Join relation= index= rows=56906 loops=1 shared_hit=10336 shared_read=0 temp_written=0
+    Sort relation= index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+      Seq Scan relation=fact_visits index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+    Sort relation= index= rows=70054 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+      CTE Scan relation= index= rows=69958 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+
+baseline / cohort / before, repetition 1
+WindowAgg relation= index= rows=300 loops=1 shared_hit=9250 shared_read=0 temp_written=0
+  Sort relation= index= rows=300 loops=1 shared_hit=9250 shared_read=0 temp_written=0
+    Subquery Scan relation= index= rows=300 loops=1 shared_hit=9250 shared_read=0 temp_written=0
+      Aggregate relation= index= rows=300 loops=1 shared_hit=9250 shared_read=0 temp_written=0
+        Hash Join relation= index= rows=10457 loops=1 shared_hit=9250 shared_read=0 temp_written=0
+          Nested Loop relation= index= rows=10457 loops=1 shared_hit=26 shared_read=0 temp_written=0
+            Seq Scan relation=dim_outlet index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+            Memoize relation= index= rows=12 loops=840 shared_hit=0 shared_read=0 temp_written=0
+              Function Scan relation= index= rows=12 loops=495 shared_hit=0 shared_read=0 temp_written=0
+          Hash relation= index= rows=53594 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+            Aggregate relation= index= rows=53594 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+              Seq Scan relation=fact_sales index= rows=329263 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+
+baseline / cohort / after, repetition 1
+WindowAgg relation= index= rows=300 loops=1 shared_hit=4904 shared_read=0 temp_written=0
+  Seq Scan relation=dim_outlet index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+  Sort relation= index= rows=300 loops=1 shared_hit=4904 shared_read=0 temp_written=0
+    Hash Join relation= index= rows=300 loops=1 shared_hit=4904 shared_read=0 temp_written=0
+      Nested Loop relation= index= rows=300 loops=1 shared_hit=26 shared_read=0 temp_written=0
+        Aggregate relation= index= rows=24 loops=1 shared_hit=26 shared_read=0 temp_written=0
+          CTE Scan relation= index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+        Function Scan relation= index= rows=12 loops=24 shared_hit=0 shared_read=0 temp_written=0
+      Hash relation= index= rows=300 loops=1 shared_hit=4878 shared_read=0 temp_written=0
+        Subquery Scan relation= index= rows=300 loops=1 shared_hit=4878 shared_read=0 temp_written=0
+          Aggregate relation= index= rows=300 loops=1 shared_hit=4878 shared_read=0 temp_written=0
+            Aggregate relation= index= rows=8791 loops=1 shared_hit=4878 shared_read=0 temp_written=0
+              Nested Loop relation= index= rows=54469 loops=1 shared_hit=4878 shared_read=0 temp_written=0
+                CTE Scan relation= index= rows=840 loops=1 shared_hit=0 shared_read=0 temp_written=0
+                Index Scan relation=fact_sales index=idx_fact_sales_outlet_id rows=65 loops=840 shared_hit=4878 shared_read=0 temp_written=0
+
+call_index / leakage / before, repetition 1
+WindowAgg relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+  WindowAgg relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+    WindowAgg relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+      Incremental Sort relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+        Subquery Scan relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+          Aggregate relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+            Sort relation= index= rows=544995 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+              Append relation= index= rows=544995 loops=1 shared_hit=62106 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+
+call_index / leakage / after, repetition 1
+WindowAgg relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+  WindowAgg relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+    WindowAgg relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+      Sort relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+        Subquery Scan relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+          Aggregate relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+            Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+              Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+              Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                  Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                  Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+
+call_index / visits / before, repetition 1
+Aggregate relation= index= rows=1 loops=1 shared_hit=164877 shared_read=0 temp_written=0
+  Seq Scan relation=fact_visits index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+  Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=0 loops=54588 shared_hit=163765 shared_read=0 temp_written=0
+
+call_index / visits / after, repetition 1
+Aggregate relation= index= rows=1 loops=1 shared_hit=2056 shared_read=0 temp_written=0
+  Unique relation= index= rows=69958 loops=1 shared_hit=944 shared_read=0 temp_written=0
+    Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=177874 loops=1 shared_hit=944 shared_read=0 temp_written=0
+  Merge Join relation= index= rows=56906 loops=1 shared_hit=2056 shared_read=0 temp_written=0
+    Sort relation= index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+      Seq Scan relation=fact_visits index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+    Sort relation= index= rows=70054 loops=1 shared_hit=944 shared_read=0 temp_written=0
+      CTE Scan relation= index= rows=69958 loops=1 shared_hit=944 shared_read=0 temp_written=0
+
+call_index / cohort / before, repetition 1
+WindowAgg relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+  Sort relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+    Subquery Scan relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+      Aggregate relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+        Hash Join relation= index= rows=10457 loops=1 shared_hit=970 shared_read=0 temp_written=0
+          Nested Loop relation= index= rows=10457 loops=1 shared_hit=26 shared_read=0 temp_written=0
+            Seq Scan relation=dim_outlet index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+            Memoize relation= index= rows=12 loops=840 shared_hit=0 shared_read=0 temp_written=0
+              Function Scan relation= index= rows=12 loops=495 shared_hit=0 shared_read=0 temp_written=0
+          Hash relation= index= rows=53594 loops=1 shared_hit=944 shared_read=0 temp_written=0
+            Aggregate relation= index= rows=53594 loops=1 shared_hit=944 shared_read=0 temp_written=0
+              Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=329263 loops=1 shared_hit=944 shared_read=0 temp_written=0
+
+call_index / cohort / after, repetition 1
+WindowAgg relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+  Seq Scan relation=dim_outlet index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+  Sort relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+    Hash Join relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+      Nested Loop relation= index= rows=300 loops=1 shared_hit=26 shared_read=0 temp_written=0
+        Aggregate relation= index= rows=24 loops=1 shared_hit=26 shared_read=0 temp_written=0
+          CTE Scan relation= index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+        Function Scan relation= index= rows=12 loops=24 shared_hit=0 shared_read=0 temp_written=0
+      Hash relation= index= rows=300 loops=1 shared_hit=944 shared_read=0 temp_written=0
+        Subquery Scan relation= index= rows=300 loops=1 shared_hit=944 shared_read=0 temp_written=0
+          Aggregate relation= index= rows=300 loops=1 shared_hit=944 shared_read=0 temp_written=0
+            Aggregate relation= index= rows=8791 loops=1 shared_hit=944 shared_read=0 temp_written=0
+              Hash Join relation= index= rows=54469 loops=1 shared_hit=944 shared_read=0 temp_written=0
+                CTE Scan relation= index= rows=840 loops=1 shared_hit=0 shared_read=0 temp_written=0
+                Hash relation= index= rows=329263 loops=1 shared_hit=944 shared_read=0 temp_written=0
+                  Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=329263 loops=1 shared_hit=944 shared_read=0 temp_written=0
+
+unhelpful_index / leakage / before, repetition 1
+WindowAgg relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+  WindowAgg relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+    WindowAgg relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+      Incremental Sort relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+        Subquery Scan relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+          Aggregate relation= index= rows=3291 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+            Sort relation= index= rows=544995 loops=1 shared_hit=62106 shared_read=0 temp_written=5638
+              Append relation= index= rows=544995 loops=1 shared_hit=62106 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+                Subquery Scan relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                  Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+                    Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+                    Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                      Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                        Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                        Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+
+unhelpful_index / leakage / after, repetition 1
+WindowAgg relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+  WindowAgg relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+    WindowAgg relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+      Sort relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+        Subquery Scan relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+          Aggregate relation= index= rows=3291 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+            Append relation= index= rows=181665 loops=1 shared_hit=20702 shared_read=0 temp_written=0
+              Seq Scan relation=fact_sales index= rows=177874 loops=1 shared_hit=9224 shared_read=0 temp_written=0
+              Subquery Scan relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                Nested Loop relation= index= rows=3791 loops=1 shared_hit=11478 shared_read=0 temp_written=0
+                  Seq Scan relation=fact_returns index= rows=3791 loops=1 shared_hit=104 shared_read=0 temp_written=0
+                  Index Only Scan relation=fact_sales index=fact_sales_pkey rows=1 loops=3791 shared_hit=11374 shared_read=0 temp_written=0
+
+unhelpful_index / visits / before, repetition 1
+Aggregate relation= index= rows=1 loops=1 shared_hit=164877 shared_read=0 temp_written=0
+  Seq Scan relation=fact_visits index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+  Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=0 loops=54588 shared_hit=163765 shared_read=0 temp_written=0
+
+unhelpful_index / visits / after, repetition 1
+Aggregate relation= index= rows=1 loops=1 shared_hit=2056 shared_read=0 temp_written=0
+  Unique relation= index= rows=69958 loops=1 shared_hit=944 shared_read=0 temp_written=0
+    Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=177874 loops=1 shared_hit=944 shared_read=0 temp_written=0
+  Merge Join relation= index= rows=56906 loops=1 shared_hit=2056 shared_read=0 temp_written=0
+    Sort relation= index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+      Seq Scan relation=fact_visits index= rows=56906 loops=1 shared_hit=1112 shared_read=0 temp_written=0
+    Sort relation= index= rows=70054 loops=1 shared_hit=944 shared_read=0 temp_written=0
+      CTE Scan relation= index= rows=69958 loops=1 shared_hit=944 shared_read=0 temp_written=0
+
+unhelpful_index / cohort / before, repetition 1
+WindowAgg relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+  Sort relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+    Subquery Scan relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+      Aggregate relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+        Hash Join relation= index= rows=10457 loops=1 shared_hit=970 shared_read=0 temp_written=0
+          Nested Loop relation= index= rows=10457 loops=1 shared_hit=26 shared_read=0 temp_written=0
+            Seq Scan relation=dim_outlet index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+            Memoize relation= index= rows=12 loops=840 shared_hit=0 shared_read=0 temp_written=0
+              Function Scan relation= index= rows=12 loops=495 shared_hit=0 shared_read=0 temp_written=0
+          Hash relation= index= rows=53594 loops=1 shared_hit=944 shared_read=0 temp_written=0
+            Aggregate relation= index= rows=53594 loops=1 shared_hit=944 shared_read=0 temp_written=0
+              Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=329263 loops=1 shared_hit=944 shared_read=0 temp_written=0
+
+unhelpful_index / cohort / after, repetition 1
+WindowAgg relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+  Seq Scan relation=dim_outlet index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+  Sort relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+    Hash Join relation= index= rows=300 loops=1 shared_hit=970 shared_read=0 temp_written=0
+      Nested Loop relation= index= rows=300 loops=1 shared_hit=26 shared_read=0 temp_written=0
+        Aggregate relation= index= rows=24 loops=1 shared_hit=26 shared_read=0 temp_written=0
+          CTE Scan relation= index= rows=840 loops=1 shared_hit=26 shared_read=0 temp_written=0
+        Function Scan relation= index= rows=12 loops=24 shared_hit=0 shared_read=0 temp_written=0
+      Hash relation= index= rows=300 loops=1 shared_hit=944 shared_read=0 temp_written=0
+        Subquery Scan relation= index= rows=300 loops=1 shared_hit=944 shared_read=0 temp_written=0
+          Aggregate relation= index= rows=300 loops=1 shared_hit=944 shared_read=0 temp_written=0
+            Aggregate relation= index= rows=8791 loops=1 shared_hit=944 shared_read=0 temp_written=0
+              Hash Join relation= index= rows=54469 loops=1 shared_hit=944 shared_read=0 temp_written=0
+                CTE Scan relation= index= rows=840 loops=1 shared_hit=0 shared_read=0 temp_written=0
+                Hash relation= index= rows=329263 loops=1 shared_hit=944 shared_read=0 temp_written=0
+                  Index Only Scan relation=fact_sales index=leakage_opt_call_match rows=329263 loops=1 shared_hit=944 shared_read=0 temp_written=0
