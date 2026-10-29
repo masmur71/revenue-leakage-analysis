@@ -50,3 +50,7 @@
 !/docs/optimization/unhelpful_index.jsonl
 !/docs/optimization/summary.csv
 !/docs/optimization/plan-excerpts.txt
+
+# Local project planning and database notes.
+/PROJECT_BRIEF.md
+/dbsummary.md
