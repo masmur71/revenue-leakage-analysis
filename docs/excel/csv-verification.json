@@ -1,0 +1,33 @@
+{
+  "status": "PASS: CSV/source reconciliation only",
+  "context": {
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31",
+    "as_of_date": "2025-12-31",
+    "observed_rfm_start": "2025-01-01",
+    "rfm_history_complete": "t",
+    "dso_history_complete": "t"
+  },
+  "counts": {
+    "DimBranch": 15,
+    "DimOutlet": 3000,
+    "DimProduct": 300,
+    "DimSalesman": 50,
+    "DimChannel": 3,
+    "DimDate": 731,
+    "FactCommercial": 335988,
+    "FactVisits": 105918,
+    "FactInvoiceSnapshot": 129653,
+    "FactTargets": 360,
+    "FactPayments": 121924,
+    "FactRFM": 3000,
+    "FactCohort": 10457,
+    "ReportContext": 1,
+    "SQLReference": 46
+  },
+  "filter_cases": 12,
+  "support_filter_cases": 4,
+  "comparisons": 860,
+  "native_excel": "NUMERIC CAPTURE MATCHED; refresh/filter evidence still requires review",
+  "limitations": "M and DAX are not executed by this validator. Native model, refresh, slicers, visual QA, saved workbook and reopen still pending."
+}

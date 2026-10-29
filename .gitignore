@@ -1,0 +1,9 @@
+# Reproducible large Phase 4 CSV extracts remain available locally.
+/data/excel/*.csv
+
+# Local macro runner and timestamped pre-installation workbook copies.
+/excel/MeasureInstaller.xlsm
+/excel/measure-backups/
+/excel/DashboardRunner.xlsm
+/excel/dashboard-runs/**/*.xlsx
+/excel/dashboard-runs/**/alternate-source/

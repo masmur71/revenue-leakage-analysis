@@ -1,0 +1,1 @@
+fnLoadCsv("FactCohort.csv", {{"cohort_cell_id", type text}, {"outlet_id", type text}, {"branch_id", type text}, {"channel", type text}, {"cohort_month", type date}, {"activity_month", type date}, {"month_age", Int64.Type}, {"active_outlet", Int64.Type}}, "cohort_cell_id")

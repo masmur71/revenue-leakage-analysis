@@ -1,0 +1,74 @@
+// Install via MeasureInstaller.bas or individually in Power Pivot. New home: ReportContext.
+// Existing matching helpers can remain on FactCommercial; avoid column/measure name collisions.
+// Definitions use invariant DAX separators; use the locale separator if prompted.
+// Internal helpers are hidden from client tools after validation.
+
+_sales_lines := CALCULATE(COUNTROWS(FactCommercial), FactCommercial[event_type] = "Sale") + 0
+_returned_cogs := SUM(FactCommercial[returned_cogs]) + 0
+_cogs_sold := SUM(FactCommercial[cogs_sold]) + 0
+_snapshot_supported := NOT ISCROSSFILTERED(DimProduct[sku_id])
+_visit_supported := NOT ISCROSSFILTERED(DimProduct[sku_id])
+_outlet_snapshot_supported := NOT ISCROSSFILTERED(DimProduct[sku_id]) && NOT ISCROSSFILTERED(DimSalesman[salesman_id])
+_completed_calls := CALCULATE(DISTINCTCOUNT(FactVisits[call_key]), FactVisits[is_completed] = TRUE()) + 0
+_converted_calls := CALCULATE(DISTINCTCOUNT(FactVisits[call_key]), FactVisits[is_completed] = TRUE(), FactVisits[has_attributed_order] = TRUE()) + 0
+_salesman_days := CALCULATE(DISTINCTCOUNT(FactVisits[salesman_day_key]), FactVisits[is_completed] = TRUE()) + 0
+_target_supported := NOT ISCROSSFILTERED(DimProduct[sku_id]) && NOT ISCROSSFILTERED(DimOutlet[outlet_id]) && NOT ISCROSSFILTERED(DimSalesman[salesman_id]) && NOT ISCROSSFILTERED(DimChannel[channel]) && MIN(DimDate[date]) = DATE(YEAR(MIN(DimDate[date])), MONTH(MIN(DimDate[date])), 1) && MAX(DimDate[date]) = EOMONTH(MAX(DimDate[date]), 0) && COUNTROWS(VALUES(DimDate[date])) = DATEDIFF(MIN(DimDate[date]), MAX(DimDate[date]), DAY) + 1
+_target_coverage := COUNTROWS(FactTargets) = COUNTROWS(VALUES(DimBranch[branch_id])) * COUNTROWS(VALUES(DimDate[year_month]))
+
+gross_sales := SUM(FactCommercial[gross_sales]) + 0
+discount_amount := SUM(FactCommercial[discount_amount]) + 0
+billed_sales := SUM(FactCommercial[billed_sales]) + 0
+return_amount := SUM(FactCommercial[return_amount]) + 0
+net_sales := [billed_sales] - [return_amount]
+net_cogs := [_cogs_sold] - [_returned_cogs]
+gross_profit := [net_sales] - [net_cogs]
+gross_margin_rate := DIVIDE([gross_profit], [net_sales])
+discount_rate := DIVIDE([discount_amount], [gross_sales])
+return_rate := DIVIDE([return_amount], [billed_sales])
+sales_units := SUM(FactCommercial[sales_units]) + 0
+returned_units := SUM(FactCommercial[returned_units]) + 0
+return_margin_reversal := [return_amount] - [_returned_cogs]
+reference_sales := SUM(FactCommercial[reference_sales]) + 0
+price_shortfall := SUM(FactCommercial[price_shortfall]) + 0
+price_upside := SUM(FactCommercial[price_upside]) + 0
+price_deviation_rate := DIVIDE([gross_sales] - [reference_sales], [reference_sales])
+invalid_promo_discount := SUM(FactCommercial[invalid_promo_discount]) + 0
+invalid_promo_line_rate := DIVIDE(SUM(FactCommercial[invalid_promo_lines]), SUM(FactCommercial[promo_lines]))
+salesman_mismatch_sales := SUM(FactCommercial[mismatch_sales]) + 0
+salesman_mismatch_rate := DIVIDE(SUM(FactCommercial[mismatch_lines]), [_sales_lines])
+active_outlets := CALCULATE(DISTINCTCOUNT(FactCommercial[outlet_id]), FactCommercial[event_type] = "Sale") + 0
+orders := CALCULATE(DISTINCTCOUNT(FactCommercial[sales_order_id]), FactCommercial[event_type] = "Sale") + 0
+average_order_value := DIVIDE([billed_sales], [orders])
+target_net_sales := IF([_target_supported] && [_target_coverage], SUM(FactTargets[target_net_sales]))
+achievement_rate := DIVIDE([net_sales], [target_net_sales])
+outstanding_ar := IF([_snapshot_supported], SUM(FactInvoiceSnapshot[outstanding]) + 0)
+overdue_ar := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[days_past_due] > 0) + 0)
+overdue_rate := DIVIDE([overdue_ar], [outstanding_ar])
+ar_not_due := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[days_past_due] <= 0) + 0)
+ar_1_30 := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[days_past_due] >= 1, FactInvoiceSnapshot[days_past_due] <= 30) + 0)
+ar_31_60 := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[days_past_due] >= 31, FactInvoiceSnapshot[days_past_due] <= 60) + 0)
+ar_61_90 := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[days_past_due] >= 61, FactInvoiceSnapshot[days_past_due] <= 90) + 0)
+ar_over_90 := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[days_past_due] > 90) + 0)
+credit_ar := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[payment_method] = "Credit") + 0)
+cash_ar := IF([_snapshot_supported], CALCULATE(SUM(FactInvoiceSnapshot[outstanding]), FactInvoiceSnapshot[payment_method] = "Cash") + 0)
+overpayment := IF([_snapshot_supported], SUM(FactInvoiceSnapshot[overpayment]) + 0)
+allocated_receipts := IF([_snapshot_supported], CALCULATE(SUM(FactPayments[payment_amount]), FactPayments[allocation_status] = "Allocated") + 0)
+dso_90d := IF([_snapshot_supported] && COUNTROWS(FILTER(ReportContext, ReportContext[dso_history_complete] = TRUE())) = 1, DIVIDE([credit_ar] * 90, SUM(FactInvoiceSnapshot[credit_billings_90d])))
+scheduled_visits := IF([_visit_supported], COUNTROWS(FactVisits) + 0)
+completed_visits := IF([_visit_supported], CALCULATE(COUNTROWS(FactVisits), FactVisits[is_completed] = TRUE()) + 0)
+effective_calls := IF([_visit_supported], CALCULATE(COUNTROWS(FactVisits), FactVisits[is_completed] = TRUE(), FactVisits[is_effective_call] = TRUE()) + 0)
+visit_completion_rate := DIVIDE([completed_visits], [scheduled_visits])
+effective_call_rate := DIVIDE([effective_calls], [completed_visits])
+order_conversion_rate := IF([_visit_supported], DIVIDE([_converted_calls], [_completed_calls]))
+calls_per_salesman_day := IF([_visit_supported], DIVIDE([completed_visits], [_salesman_days]))
+
+// Extra diagnostics; never sum overlapping indicators into recoverable loss.
+price_bridge_residual := [reference_sales] + [price_upside] - [price_shortfall] - [discount_amount] - [billed_sales]
+net_bridge_residual := [billed_sales] - [return_amount] - [net_sales]
+aging_residual := [outstanding_ar] - [ar_not_due] - [ar_1_30] - [ar_31_60] - [ar_61_90] - [ar_over_90]
+target_gap := IF(NOT ISBLANK([target_net_sales]), [net_sales] - [target_net_sales])
+rfm_outlets := IF([_outlet_snapshot_supported], COUNTROWS(FactRFM) + 0)
+rfm_monetary := IF([_outlet_snapshot_supported], SUM(FactRFM[monetary]) + 0)
+cohort_outlets := IF([_outlet_snapshot_supported] && HASONEVALUE(FactCohort[activity_month]), COUNTROWS(FactCohort) + 0)
+cohort_active_outlets := IF([_outlet_snapshot_supported] && HASONEVALUE(FactCohort[activity_month]), SUM(FactCohort[active_outlet]) + 0)
+retention_rate := DIVIDE([cohort_active_outlets], [cohort_outlets])

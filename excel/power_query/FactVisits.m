@@ -1,0 +1,1 @@
+fnLoadCsv("FactVisits.csv", {{"visit_id", type text}, {"visit_date", type date}, {"branch_id", type text}, {"outlet_id", type text}, {"salesman_id", type text}, {"channel", type text}, {"is_completed", type logical}, {"is_effective_call", type logical}, {"has_attributed_order", type logical}, {"call_key", type text}, {"salesman_day_key", type text}}, "visit_id")

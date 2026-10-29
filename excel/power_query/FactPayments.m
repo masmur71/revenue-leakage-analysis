@@ -1,0 +1,1 @@
+fnLoadCsv("FactPayments.csv", {{"payment_id", type text}, {"payment_date", type date}, {"branch_id", type text}, {"outlet_id", type text}, {"salesman_id", type text}, {"channel", type text}, {"payment_amount", Currency.Type}, {"allocation_status", type text}}, "payment_id")

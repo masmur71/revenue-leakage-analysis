@@ -1,0 +1,15 @@
+name,rows
+DimBranch,15
+DimOutlet,3000
+DimProduct,300
+DimSalesman,50
+DimChannel,3
+DimDate,731
+FactCommercial,335988
+FactVisits,105918
+FactInvoiceSnapshot,129653
+FactTargets,360
+FactPayments,121924
+FactRFM,3000
+FactCohort,10457
+ReportContext,1

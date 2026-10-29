@@ -1,0 +1,560 @@
+{
+  "DimBranch": {
+    "key": "branch_id",
+    "columns": [
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "branch_name",
+        "type": "text"
+      },
+      {
+        "name": "region_id",
+        "type": "text"
+      },
+      {
+        "name": "region_name",
+        "type": "text"
+      },
+      {
+        "name": "city",
+        "type": "text"
+      },
+      {
+        "name": "province",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "DimOutlet": {
+    "key": "outlet_id",
+    "columns": [
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "outlet_name",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "onboard_date",
+        "type": "date"
+      }
+    ],
+    "load": "model-only"
+  },
+  "DimProduct": {
+    "key": "sku_id",
+    "columns": [
+      {
+        "name": "sku_id",
+        "type": "text"
+      },
+      {
+        "name": "sku_name",
+        "type": "text"
+      },
+      {
+        "name": "category",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "DimSalesman": {
+    "key": "salesman_id",
+    "columns": [
+      {
+        "name": "salesman_id",
+        "type": "text"
+      },
+      {
+        "name": "salesman_name",
+        "type": "text"
+      },
+      {
+        "name": "home_branch_id",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "DimChannel": {
+    "key": "channel",
+    "columns": [
+      {
+        "name": "channel",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "DimDate": {
+    "key": "date",
+    "columns": [
+      {
+        "name": "date",
+        "type": "date"
+      },
+      {
+        "name": "year",
+        "type": "int"
+      },
+      {
+        "name": "quarter",
+        "type": "int"
+      },
+      {
+        "name": "month",
+        "type": "int"
+      },
+      {
+        "name": "month_name",
+        "type": "text"
+      },
+      {
+        "name": "year_month",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactCommercial": {
+    "key": "event_id",
+    "columns": [
+      {
+        "name": "event_id",
+        "type": "text"
+      },
+      {
+        "name": "event_type",
+        "type": "text"
+      },
+      {
+        "name": "event_date",
+        "type": "date"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "sku_id",
+        "type": "text"
+      },
+      {
+        "name": "salesman_id",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "sales_order_id",
+        "type": "text"
+      },
+      {
+        "name": "sales_units",
+        "type": "int"
+      },
+      {
+        "name": "returned_units",
+        "type": "int"
+      },
+      {
+        "name": "reference_sales",
+        "type": "money"
+      },
+      {
+        "name": "gross_sales",
+        "type": "money"
+      },
+      {
+        "name": "discount_amount",
+        "type": "money"
+      },
+      {
+        "name": "billed_sales",
+        "type": "money"
+      },
+      {
+        "name": "cogs_sold",
+        "type": "money"
+      },
+      {
+        "name": "price_shortfall",
+        "type": "money"
+      },
+      {
+        "name": "price_upside",
+        "type": "money"
+      },
+      {
+        "name": "invalid_promo_discount",
+        "type": "money"
+      },
+      {
+        "name": "promo_lines",
+        "type": "int"
+      },
+      {
+        "name": "invalid_promo_lines",
+        "type": "int"
+      },
+      {
+        "name": "mismatch_lines",
+        "type": "int"
+      },
+      {
+        "name": "mismatch_sales",
+        "type": "money"
+      },
+      {
+        "name": "return_amount",
+        "type": "money"
+      },
+      {
+        "name": "returned_cogs",
+        "type": "money"
+      },
+      {
+        "name": "return_reason",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactVisits": {
+    "key": "visit_id",
+    "columns": [
+      {
+        "name": "visit_id",
+        "type": "text"
+      },
+      {
+        "name": "visit_date",
+        "type": "date"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "salesman_id",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "is_completed",
+        "type": "bool"
+      },
+      {
+        "name": "is_effective_call",
+        "type": "bool"
+      },
+      {
+        "name": "has_attributed_order",
+        "type": "bool"
+      },
+      {
+        "name": "call_key",
+        "type": "text"
+      },
+      {
+        "name": "salesman_day_key",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactInvoiceSnapshot": {
+    "key": "invoice_id",
+    "columns": [
+      {
+        "name": "invoice_id",
+        "type": "text"
+      },
+      {
+        "name": "invoice_date",
+        "type": "date"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "salesman_id",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "payment_method",
+        "type": "text"
+      },
+      {
+        "name": "invoice_amount",
+        "type": "money"
+      },
+      {
+        "name": "allocated_paid",
+        "type": "money"
+      },
+      {
+        "name": "outstanding",
+        "type": "money"
+      },
+      {
+        "name": "overpayment",
+        "type": "money"
+      },
+      {
+        "name": "applicable_term_days",
+        "type": "int"
+      },
+      {
+        "name": "contractual_due_date",
+        "type": "date"
+      },
+      {
+        "name": "days_past_due",
+        "type": "int"
+      },
+      {
+        "name": "credit_billings_90d",
+        "type": "money"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactTargets": {
+    "key": "target_id",
+    "columns": [
+      {
+        "name": "target_id",
+        "type": "text"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "month_start",
+        "type": "date"
+      },
+      {
+        "name": "target_net_sales",
+        "type": "money"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactPayments": {
+    "key": "payment_id",
+    "columns": [
+      {
+        "name": "payment_id",
+        "type": "text"
+      },
+      {
+        "name": "payment_date",
+        "type": "date"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "salesman_id",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "payment_amount",
+        "type": "money"
+      },
+      {
+        "name": "allocation_status",
+        "type": "text"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactRFM": {
+    "key": "outlet_id",
+    "columns": [
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "recency_days",
+        "type": "int"
+      },
+      {
+        "name": "frequency",
+        "type": "int"
+      },
+      {
+        "name": "monetary",
+        "type": "money"
+      },
+      {
+        "name": "r_score",
+        "type": "int"
+      },
+      {
+        "name": "f_score",
+        "type": "int"
+      },
+      {
+        "name": "m_score",
+        "type": "int"
+      },
+      {
+        "name": "segment",
+        "type": "text"
+      },
+      {
+        "name": "rfm_history_complete",
+        "type": "bool"
+      }
+    ],
+    "load": "model-only"
+  },
+  "FactCohort": {
+    "key": "cohort_cell_id",
+    "columns": [
+      {
+        "name": "cohort_cell_id",
+        "type": "text"
+      },
+      {
+        "name": "outlet_id",
+        "type": "text"
+      },
+      {
+        "name": "branch_id",
+        "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
+      },
+      {
+        "name": "cohort_month",
+        "type": "date"
+      },
+      {
+        "name": "activity_month",
+        "type": "date"
+      },
+      {
+        "name": "month_age",
+        "type": "int"
+      },
+      {
+        "name": "active_outlet",
+        "type": "int"
+      }
+    ],
+    "load": "model-only"
+  },
+  "ReportContext": {
+    "key": null,
+    "columns": [
+      {
+        "name": "period_start",
+        "type": "date"
+      },
+      {
+        "name": "period_end",
+        "type": "date"
+      },
+      {
+        "name": "as_of_date",
+        "type": "date"
+      },
+      {
+        "name": "observed_rfm_start",
+        "type": "date"
+      },
+      {
+        "name": "rfm_history_complete",
+        "type": "bool"
+      },
+      {
+        "name": "dso_history_complete",
+        "type": "bool"
+      }
+    ],
+    "load": "model-only"
+  },
+  "SQLReference": {
+    "key": "metric_id",
+    "columns": [
+      {
+        "name": "metric_id",
+        "type": "text"
+      },
+      {
+        "name": "numerator",
+        "type": "number"
+      },
+      {
+        "name": "denominator",
+        "type": "number"
+      },
+      {
+        "name": "value",
+        "type": "number"
+      },
+      {
+        "name": "unit",
+        "type": "text"
+      }
+    ],
+    "load": "worksheet-only"
+  }
+}

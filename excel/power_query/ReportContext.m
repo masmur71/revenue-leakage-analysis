@@ -1,0 +1,1 @@
+fnLoadCsv("ReportContext.csv", {{"period_start", type date}, {"period_end", type date}, {"as_of_date", type date}, {"observed_rfm_start", type date}, {"rfm_history_complete", type logical}, {"dso_history_complete", type logical}}, null)

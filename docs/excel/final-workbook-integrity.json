@@ -1,0 +1,19 @@
+{
+  "file": "excel/RevenueLeakage.xlsx",
+  "bytes": 33613322,
+  "sha256": "72dce81f82b2d1c0aefa77201652ceaf81b33e9d8521552ce45a2bd22a35e047",
+  "zip_crc": "PASS",
+  "embedded_data_model": true,
+  "macro_free": true,
+  "sheets": [
+    "Executive Summary",
+    "Leakage Diagnostics",
+    "Operations",
+    "relationships",
+    "Data & Calculations",
+    "Methodology",
+    "Native Verification",
+    "Cohort Verification"
+  ],
+  "scope": "File integrity only; native acceptance combines executed logs/captures and final operator reports."
+}

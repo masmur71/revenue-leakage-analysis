@@ -1,0 +1,42 @@
+                       check_name                       | failures 
+--------------------------------------------------------+----------
+ aging buckets partition receivables                    |        0
+ cash exception and credit due dates                    |        0
+ cohort denominator stable across months                |        0
+ cohort numerator bounded and no future cells           |        0
+ conversion and completion counts bounded               |        0
+ effective calls require completion and attributed sale |        0
+ financial and reference price bridges                  |        0
+ fixture: aging boundary inclusivity                    |        0
+ fixture: inclusive SCD2 year boundary                  |        0
+ fixture: later return does not rewrite earlier sales   |        0
+ fixture: non-promo false flag excluded                 |        0
+ fixture: payments respect snapshot and allocation      |        0
+ fixture: zero denominator is undefined                 |        0
+ full-history Phase 0 controls                          |        0
+ historical term coverage                               |        0
+ incomplete DSO history is undefined                    |        0
+ invalid promo discount is a subset                     |        0
+ invoice snapshot balance identity                      |        0
+ invoice snapshot has one row per eligible invoice      |        0
+ nonnegative invoice and payment amounts                |        0
+ onboarding precedes first transaction                  |        0
+ partial-month targets are undefined                    |        0
+ positive quantity and reference price                  |        0
+ recognized allocation domain                           |        0
+ recognized payment domains                             |        0
+ return sources preserve original sales dimensions      |        0
+ RFM frequency reconciles to source orders              |        0
+ RFM frequency ties share scores                        |        0
+ RFM monetary reconciles to event net sales             |        0
+ RFM monetary ties share active scores                  |        0
+ RFM scores respect activity and bounds                 |        0
+ sales amount domains                                   |        0
+ salesman match flag agrees with IDs                    |        0
+ target coverage is complete for all branch months      |        0
+ target format and nonnegative amount                   |        0
+ target month matches date dimension                    |        0
+ unique metric IDs                                      |        0
+ zero denominators produce NULL                         |        0
+(38 rows)
+

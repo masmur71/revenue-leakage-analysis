@@ -1,0 +1,14 @@
+name,sheet,anchor,rows,columns,measures,chart
+pTrend,Executive Summary,A15,DimDate.year_month,,net_sales|target_net_sales,line
+pBranchAchievement,Executive Summary,A50,DimBranch.region_name|DimBranch.branch_name,,net_sales|target_gap|achievement_rate,
+pExecutive,Data & Calculations,AA5,,,net_sales|gross_profit|gross_margin_rate|target_net_sales|achievement_rate|price_shortfall|discount_amount|return_amount,
+pLeakBranch,Leakage Diagnostics,A10,DimBranch.branch_name,,reference_sales|price_upside|price_shortfall|discount_amount|billed_sales|return_amount|net_sales|gross_profit,
+pLeakSKU,Leakage Diagnostics,A65,DimProduct.sku_name,,price_shortfall|return_amount|return_rate|billed_sales,
+pLeakOutlet,Leakage Diagnostics,A90,DimOutlet.outlet_name,,price_shortfall|return_amount|return_rate|billed_sales,
+pReturnReasons,Leakage Diagnostics,A115,FactCommercial.return_reason,,return_amount|return_margin_reversal,
+pLeakChart,Data & Calculations,AA120,DimBranch.branch_name,,price_shortfall,bar
+pAR,Operations,A10,DimBranch.branch_name,,outstanding_ar|overdue_ar|overdue_rate|dso_90d,
+pVisits,Operations,A40,DimSalesman.salesman_name,,completed_visits|visit_completion_rate|effective_call_rate|order_conversion_rate|calls_per_salesman_day,
+pRFM,Operations,A100,FactRFM.segment,,rfm_outlets|rfm_monetary,
+pCohort,Operations,A120,FactCohort.cohort_month,FactCohort.activity_month,retention_rate,
+pAcceptanceControls,Data & Calculations,AA30,,,achievement_rate|active_outlets|allocated_receipts|ar_1_30|ar_31_60|ar_61_90|ar_not_due|ar_over_90|average_order_value|billed_sales|calls_per_salesman_day|cash_ar|completed_visits|credit_ar|discount_amount|discount_rate|dso_90d|effective_call_rate|effective_calls|gross_margin_rate|gross_profit|gross_sales|invalid_promo_discount|invalid_promo_line_rate|net_cogs|net_sales|order_conversion_rate|orders|outstanding_ar|overdue_ar|overdue_rate|overpayment|price_deviation_rate|price_shortfall|price_upside|reference_sales|return_amount|returned_units|return_margin_reversal|return_rate|salesman_mismatch_rate|salesman_mismatch_sales|sales_units|scheduled_visits|target_net_sales|visit_completion_rate|price_bridge_residual|net_bridge_residual|aging_residual,

@@ -1,0 +1,5 @@
+case_id,start_date,end_date,branch_id,sku_id,outlet_id,channel,salesman_id,cohort_month,activity_month,segment,date_list
+cohort_2025-01-01_2025-01-01,,,,,,,,2025-01-01,2025-01-01,,
+cohort_2025-12-01_2025-12-01,,,,,,,,2025-12-01,2025-12-01,,
+cohort_unobserved,,,,,,,,2025-12-01,2025-01-01,,
+cohort_multi_month,,,,,,,,2025-01-01,2025-01-01|2025-02-01,,

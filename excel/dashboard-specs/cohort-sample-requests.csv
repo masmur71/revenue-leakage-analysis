@@ -1,0 +1,11 @@
+case_id,metric_id
+cohort_2025-01-01_2025-01-01,cohort_outlets
+cohort_2025-01-01_2025-01-01,cohort_active_outlets
+cohort_2025-01-01_2025-01-01,retention_rate
+cohort_2025-12-01_2025-12-01,cohort_outlets
+cohort_2025-12-01_2025-12-01,cohort_active_outlets
+cohort_2025-12-01_2025-12-01,retention_rate
+cohort_unobserved,retention_rate
+cohort_multi_month,cohort_outlets
+cohort_multi_month,cohort_active_outlets
+cohort_multi_month,retention_rate

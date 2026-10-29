@@ -1,0 +1,1 @@
+fnLoadCsv("FactRFM.csv", {{"outlet_id", type text}, {"branch_id", type text}, {"channel", type text}, {"recency_days", Int64.Type}, {"frequency", Int64.Type}, {"monetary", Currency.Type}, {"r_score", Int64.Type}, {"f_score", Int64.Type}, {"m_score", Int64.Type}, {"segment", type text}, {"rfm_history_complete", type logical}}, "outlet_id")

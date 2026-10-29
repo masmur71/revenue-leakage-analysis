@@ -1,0 +1,2 @@
+PASS: 27 VBA-compatible pure-core assertions; Excel not opened.
+PASS: 1409 contract/validation assertions. PENDING: native VBA compile, dashboard execution, refresh and reconciliation.

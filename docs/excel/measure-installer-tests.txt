@@ -1,0 +1,3 @@
+PASS: 268 pure-core assertions; no Excel workbook opened or changed.
+PASS: fixed target binding, conflict/backup ordering, home-table collisions and 66-source contract.
+PENDING: native VBA compilation, ModelMeasures.Add, rerun and PivotTable/SQL checks in Excel.

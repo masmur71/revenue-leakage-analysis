@@ -1,0 +1,10 @@
+name,field,top_row
+rlYear,DimDate.year,3
+rlMonth,DimDate.year_month,15
+rlRegion,DimBranch.region_name,27
+rlBranch,DimBranch.branch_name,39
+rlCategory,DimProduct.category,51
+rlSKU,DimProduct.sku_name,63
+rlOutlet,DimOutlet.outlet_id,75
+rlSalesman,DimSalesman.salesman_name,87
+rlChannel,DimChannel.channel,99

@@ -1,0 +1,31 @@
+                     check_name                     | failures 
+----------------------------------------------------+----------
+ AR additive controls                               |        0
+ AR aging partitions                                |        0
+ AR grain unique                                    |        0
+ branch month sales profit units reconcile          |        0
+ branch month unique                                |        0
+ cohort cells preserved                             |        0
+ complete month target coverage                     |        0
+ leakage additive controls per dimension            |        0
+ leakage grain unique                               |        0
+ member financial bridges                           |        0
+ partial month targets undefined                    |        0
+ return reasons preserve amount and events          |        0
+ RFM segments preserve all outlet scores            |        0
+ salesman additive controls                         |        0
+ YoY bridge exact within numeric division tolerance |        0
+(15 rows)
+
+     name     | rows |           fingerprint            
+--------------+------+----------------------------------
+ ar           | 2976 | 80c6cd1754af9686531f7a052e0bed21
+ branch_month |  180 | a50012b1c9f2f397f0f41ad5605bae32
+ cohort       |  300 | 343b4b1b39930818decc07567f3ce38e
+ leakage      | 3291 | 4a481a3975ea4426cdf07d3ece91f646
+ returns      | 3788 | 624b22b201067808d8b3584888ea616a
+ rfm          | 3000 | b6bf76d43b0f17789144eaebff11c1c4
+ salesman     |   50 | 71cd2d178c903e3a857b141aaee179c1
+ yoy          |  180 | 14dcedf7dce07f62b19e1854d6c74295
+(8 rows)
+
