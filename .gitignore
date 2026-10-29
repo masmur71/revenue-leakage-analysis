@@ -41,8 +41,8 @@
 !/docs/excel/final-workbook-integrity.json
 !/docs/excel/screenshots/
 /docs/excel/screenshots/*
-!/docs/excel/screenshots/stage12-medan-slicer-chart.png
-!/docs/excel/screenshots/stage12-refresh-restored-query-facts.png
+!/docs/excel/screenshots/sales-dashboard.png
+!/docs/excel/screenshots/power-query-model.png
 !/docs/optimization/
 /docs/optimization/*
 !/docs/optimization/baseline.jsonl
